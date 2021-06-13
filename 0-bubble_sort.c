@@ -1,5 +1,4 @@
 #include "sort.h"
-#include <stdio.h>
 
 /**
 * swap - function that swaps the two integers.
@@ -28,7 +27,7 @@ void swap(int *a, int *b)
 
 void bubble_sort(int *array, size_t size)
 {
-	unsigned int i, j;
+	unsigned int i, j, swapped = 0;
 	size_t n = size;
 
 	for (i = 0; i < n - 1; i++)
@@ -39,7 +38,10 @@ void bubble_sort(int *array, size_t size)
 			{
 				swap(&array[j], &array[j + 1]);
 				print_array(array, n);
+				swapped = 1;
 			}
 		}
+		if (swapped == 0)
+			break;
 	}
 }
