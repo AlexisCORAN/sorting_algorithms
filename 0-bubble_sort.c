@@ -27,7 +27,7 @@ void swap(int *a, int *b)
 
 void bubble_sort(int *array, size_t size)
 {
-	unsigned int i, j, swapped = 0;
+	unsigned int i, j;
 	size_t n = size;
 
 	if (array == NULL || size < 2)
@@ -41,10 +41,7 @@ void bubble_sort(int *array, size_t size)
 			{
 				swap(&array[j], &array[j + 1]);
 				print_array(array, n);
-				swapped = 1;
 			}
 		}
-		if (swapped == 0)
-			break;
 	}
 }
