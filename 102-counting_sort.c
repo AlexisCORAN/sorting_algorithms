@@ -1,8 +1,29 @@
 #include "sort.h"
 
 /**
+* num_max - find the largest number in the array.
+*
+*@array: array of integers.
+*
+*@size: size of array.
+*/
+
+int num_max(int *array, int size)
+{
+	int max = array[0], i;
+
+	for (i = 1; i < size; i++)
+	{
+		if (array[i] > max)
+			max = array[i];
+	}
+	
+	return (max);
+}
+
+/**
 * counting_sort - sorts an array of integers in ascending order
-*		using the Counting sort algorithm
+*               using the Counting sort algorithm
 *@array: array of integers.
 *
 *@size: size of array.
@@ -10,22 +31,27 @@
 
 void counting_sort(int *array, size_t size)
 {
-	int i;
+	int i, max;
 	int n = size;
-	int max = 0;
 	int *count, *output;
 
-	if (array == NULL || size < 2)
+	if (array == NULL || n < 2)
 		return;
 
-	for (i = 1; i < n; i++)
-	{
-		if (array[i] > max)
-			max = array[i];
-	}
+	max = num_max(array, n);
+
+	output = malloc(sizeof(int) * n);
+
+	if (output == NULL)
+		return;
 
 	count = malloc(sizeof(int) * (max + 1));
-	output = malloc(sizeof(int) * n);
+
+	if (count == NULL)
+	{
+		free(output);
+		return;
+	}
 
 	for (i = 0; i < n; i++)
 		count[array[i]]++;
