@@ -6,6 +6,8 @@
 *@array: array of integers.
 *
 *@size: size of array.
+*
+*Return: returns the largest number in the array.
 */
 
 int num_max(int *array, int size)
@@ -17,7 +19,6 @@ int num_max(int *array, int size)
 		if (array[i] > max)
 			max = array[i];
 	}
-	
 	return (max);
 }
 
